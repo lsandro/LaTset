@@ -22,6 +22,6 @@
 
 @property (assign,nonatomic) NSInteger indexRow;
 
-@property(nonatomic,weak)void(^lsBlock)(NSMutableDictionary *lsDict);
+@property(nonatomic,copy)void(^lsBlock)(NSMutableDictionary *lsDict);
 
 @end

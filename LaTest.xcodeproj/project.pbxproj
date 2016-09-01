@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2BBE3B681D785ED800A8B911 /* Tv2TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBE3B671D785ED800A8B911 /* Tv2TableViewCell.m */; };
 		2BEE11831D768D1600B642E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEE11821D768D1600B642E6 /* main.m */; };
 		2BEE11861D768D1600B642E6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEE11851D768D1600B642E6 /* AppDelegate.m */; };
 		2BEE11891D768D1600B642E6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEE11881D768D1600B642E6 /* ViewController.m */; };
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2BBE3B661D785ED800A8B911 /* Tv2TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tv2TableViewCell.h; sourceTree = "<group>"; };
+		2BBE3B671D785ED800A8B911 /* Tv2TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tv2TableViewCell.m; sourceTree = "<group>"; };
 		2BEE117E1D768D1600B642E6 /* LaTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LaTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BEE11821D768D1600B642E6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2BEE11841D768D1600B642E6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -119,6 +122,8 @@
 				2BEE11B91D76A4ED00B642E6 /* Tv1TableViewCell.h */,
 				2BEE11BA1D76A4ED00B642E6 /* Tv1TableViewCell.m */,
 				2BEE11BC1D76A9C600B642E6 /* Tv1TableViewCell.xib */,
+				2BBE3B661D785ED800A8B911 /* Tv2TableViewCell.h */,
+				2BBE3B671D785ED800A8B911 /* Tv2TableViewCell.m */,
 				2BEE118D1D768D1600B642E6 /* Assets.xcassets */,
 				2BEE118F1D768D1600B642E6 /* LaunchScreen.storyboard */,
 				2BEE11921D768D1600B642E6 /* Info.plist */,
@@ -286,6 +291,7 @@
 			files = (
 				2BEE11BB1D76A4ED00B642E6 /* Tv1TableViewCell.m in Sources */,
 				2BEE11B71D76911C00B642E6 /* TV1ViewController.m in Sources */,
+				2BBE3B681D785ED800A8B911 /* Tv2TableViewCell.m in Sources */,
 				2BEE11891D768D1600B642E6 /* ViewController.m in Sources */,
 				2BEE11861D768D1600B642E6 /* AppDelegate.m in Sources */,
 				2BEE11831D768D1600B642E6 /* main.m in Sources */,
@@ -506,6 +512,7 @@
 				2BEE11AD1D768D1600B642E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2BEE11AE1D768D1600B642E6 /* Build configuration list for PBXNativeTarget "LaTestTests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +521,7 @@
 				2BEE11B01D768D1600B642E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2BEE11B11D768D1600B642E6 /* Build configuration list for PBXNativeTarget "LaTestUITests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +530,7 @@
 				2BEE11B31D768D1600B642E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

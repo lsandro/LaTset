@@ -8,6 +8,7 @@
 
 #import "TV1ViewController.h"
 #import "Tv1TableViewCell.h"
+#import "Tv2TableViewCell.h"
 
 static NSString *CellTableIdentifier = @"CellTableIdentifier";
 
@@ -26,7 +27,7 @@ static NSString *CellTableIdentifier = @"CellTableIdentifier";
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-   // tv1Cell = [[Tv1TableViewCell alloc] init];
+    //Tv1TableViewCell *tv1Cell = [[Tv1TableViewCell alloc] init];
     //tv1Cell.lsDelegate = self;
     
     strArr = [NSMutableArray alloc];
@@ -35,18 +36,11 @@ static NSString *CellTableIdentifier = @"CellTableIdentifier";
     //[strArr addObjectsFromArray:arr];
     strArr = [arr mutableCopy];
     
-    [_tv1 registerClass:[Tv1TableViewCell class] forCellReuseIdentifier:CellTableIdentifier];
-/*
-    __weak TV1ViewController *weakSelf = self;
-    tv1Cell.lsBlock = ^(NSMutableDictionary *dict){
-        //NSLog(@"block回调：%@",str);
-        NSNumber *indexNum = [dict objectForKey:@"index"];
-        NSInteger index = [indexNum integerValue];
-        NSString *str = [dict objectForKey:@"str"];
-        //[strArr replaceObjectAtIndex:index withObject:str];
-        [weakSelf.tv1 reloadData];
-    };
- */
+    [_tv1 registerClass:[Tv1TableViewCell class] forCellReuseIdentifier:@"c1"];
+    [_tv1 registerClass:[Tv2TableViewCell class] forCellReuseIdentifier:@"c2"];
+
+   
+ 
 }
 
 - (void)didReceiveMemoryWarning {
@@ -93,12 +87,22 @@ int i = 1;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"3");
-    Tv1TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier forIndexPath:indexPath];
+    Tv1TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"c1" forIndexPath:indexPath];
     cell.lsDelegate = self;
    // UITableViewCell *cell = [cellConfig cellOfCellConfigWithTableView:tableView dataModel:self.modelToShow];
     //static NSString *CellIdentifier = @"Cell";
     //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
+    /*
+    __weak TV1ViewController *weakSelf = self;
+    cell.lsBlock = ^(NSMutableDictionary *dict){
+        NSLog(@"block回调：%@",dict);
+        NSNumber *indexNum = [dict objectForKey:@"index"];
+        NSInteger index = [indexNum integerValue];
+        NSString *str = [dict objectForKey:@"str"];
+        [strArr replaceObjectAtIndex:index withObject:str];
+        [weakSelf.tv1 reloadData];
+    };
+    */
     NSLog(@"5");
     //cell.textLabel.text = @"1";
     cell.str = strArr[indexPath.row];
