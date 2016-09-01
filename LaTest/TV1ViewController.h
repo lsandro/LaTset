@@ -1,0 +1,14 @@
+//
+//  TV1ViewController.h
+//  LaTest
+//
+//  Created by apple07 on 16/8/31.
+//  Copyright © 2016年 Sandro. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface TV1ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tv1;
+
+@end
