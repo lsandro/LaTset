@@ -20,9 +20,7 @@ static NSString *CellTableIdentifier = @"CellTableIdentifier";
 @end
 
 @implementation TV1ViewController
-{
-    Tv1TableViewCell *tv1Cell;
-}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -96,6 +94,7 @@ int i = 1;
 {
     NSLog(@"3");
     Tv1TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier forIndexPath:indexPath];
+    cell.lsDelegate = self;
    // UITableViewCell *cell = [cellConfig cellOfCellConfigWithTableView:tableView dataModel:self.modelToShow];
     //static NSString *CellIdentifier = @"Cell";
     //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
