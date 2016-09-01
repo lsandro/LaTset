@@ -8,8 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol lashenDelegate <NSObject>
+
+- (void)setStr:(NSString *)str atIndex:(NSInteger)index;
+
+@end
+
 @interface Tv1TableViewCell : UITableViewCell
 
+@property (nonatomic, weak) id<lashenDelegate> lsDelegate;
+
 @property (copy,nonatomic) NSString *str;
+
+@property (assign,nonatomic) NSInteger indexRow;
+
+@property(nonatomic,weak)void(^lsBlock)(NSMutableDictionary *lsDict);
 
 @end

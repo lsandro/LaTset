@@ -12,7 +12,7 @@
 static NSString *CellTableIdentifier = @"CellTableIdentifier";
 
 
-@interface TV1ViewController (){
+@interface TV1ViewController ()<lashenDelegate>{
     NSMutableArray *strArr;
 
 }
@@ -20,10 +20,17 @@ static NSString *CellTableIdentifier = @"CellTableIdentifier";
 @end
 
 @implementation TV1ViewController
+{
+    Tv1TableViewCell *tv1Cell;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+   // tv1Cell = [[Tv1TableViewCell alloc] init];
+    //tv1Cell.lsDelegate = self;
+    
     strArr = [NSMutableArray alloc];
     NSArray *arr = [[NSArray alloc] init];
     arr = @[@"你好",@"你好你好",@"你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你",@"你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你",@"好你好",@"你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好",@"你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你",@"8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888",@"999",@"10",@"11",@"12"];
@@ -31,8 +38,17 @@ static NSString *CellTableIdentifier = @"CellTableIdentifier";
     strArr = [arr mutableCopy];
     
     [_tv1 registerClass:[Tv1TableViewCell class] forCellReuseIdentifier:CellTableIdentifier];
-
-    
+/*
+    __weak TV1ViewController *weakSelf = self;
+    tv1Cell.lsBlock = ^(NSMutableDictionary *dict){
+        //NSLog(@"block回调：%@",str);
+        NSNumber *indexNum = [dict objectForKey:@"index"];
+        NSInteger index = [indexNum integerValue];
+        NSString *str = [dict objectForKey:@"str"];
+        //[strArr replaceObjectAtIndex:index withObject:str];
+        [weakSelf.tv1 reloadData];
+    };
+ */
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,7 +83,7 @@ int i = 1;
     //CGFloat changeHeight = 10;
     CGFloat changeHeight = [self HeightForText:strArr[indexPath.row]];
     NSLog(@"a");
-    return changeHeight+10;
+    return changeHeight+10+50;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -84,15 +100,10 @@ int i = 1;
     //static NSString *CellIdentifier = @"Cell";
     //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    if (cell == nil) {
-        NSLog(@"4");
-        cell = [[Tv1TableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellTableIdentifier];
-        
-    }
-    
     NSLog(@"5");
     //cell.textLabel.text = @"1";
     cell.str = strArr[indexPath.row];
+    cell.indexRow = indexPath.row;
     NSLog(@"--------%d",i);
     i++;
 
@@ -102,7 +113,7 @@ int i = 1;
     
     
 }
-
+#pragma mark - cell动态行高
 - (CGFloat)HeightForText:(NSString *)text
 {
     NSDictionary *dict = @{NSFontAttributeName: [UIFont systemFontOfSize:17.0]};
@@ -111,7 +122,7 @@ int i = 1;
     return frame.size.height;
 }
 
-
+#pragma mark - 删除cell
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return UITableViewCellEditingStyleDelete;
@@ -131,7 +142,14 @@ int i = 1;
         /*此处处理自己的代码，如删除数据*/
         [strArr removeObjectAtIndex:indexPath.row];
         /*删除tableView中的一行*/
-        [tableView deleteRowsAtIndexPaths:[NSMutableArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [tableView deleteRowsAtIndexPaths:[NSMutableArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
     }
+}
+
+#pragma mark - 点击按钮拉伸的代理
+- (void)setStr:(NSString *)str atIndex:(NSInteger)index{
+    NSLog(@"触发代理");
+    [strArr replaceObjectAtIndex:index withObject:str];
+    [_tv1 reloadData];
 }
 @end
