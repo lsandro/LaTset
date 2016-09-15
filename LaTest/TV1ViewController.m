@@ -153,6 +153,7 @@ int i = 1;
 - (void)setStr:(NSString *)str atIndex:(NSInteger)index{
     NSLog(@"触发代理");
     [strArr replaceObjectAtIndex:index withObject:str];
-    [_tv1 reloadData];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
+    [_tv1 reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 @end
